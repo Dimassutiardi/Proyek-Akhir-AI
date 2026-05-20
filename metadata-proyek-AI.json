@@ -1,0 +1,223 @@
+{
+  "kode_kelompok": "KXX",
+  "topik_pilihan": 4,
+  "nama_topik": "Transformer",
+  "judul_proyek": "Klasifikasi Sentimen Ulasan Aplikasi Spotify Menggunakan IndoBERT Berbasis Transformer",
+  "abstrak_singkat": "Proyek ini mengimplementasikan arsitektur Transformer melalui model IndoBERT untuk melakukan klasifikasi sentimen ulasan pengguna aplikasi Spotify berbahasa Indonesia dari Google Play Store ke dalam kategori positif, netral, dan negatif. Dataset yang digunakan berasal dari Kaggle dan berisi ulasan pengguna Spotify dalam Bahasa Indonesia. Model utama IndoBERT dibandingkan dengan baseline TF-IDF + Logistic Regression untuk mengevaluasi peningkatan performa pendekatan Transformer terhadap metode machine learning tradisional. Evaluasi dilakukan menggunakan metrik Accuracy, Precision, Recall, F1-macro, dan Confusion Matrix.",
+
+  "metode_ai": [
+    {
+      "nama": "IndoBERT",
+      "peran": "utama",
+      "varian": "Fine-tuning pretrained indobenchmark/indobert-base-p1 dengan classification head untuk multiclass sentiment classification",
+      "catatan": "Model utama berbasis Transformer untuk memahami konteks teks Bahasa Indonesia."
+    },
+    {
+      "nama": "TF-IDF + Logistic Regression",
+      "peran": "baseline",
+      "varian": "TF-IDF unigram dan bigram dengan classifier Logistic Regression",
+      "catatan": "Baseline pembanding untuk evaluasi komparatif dan klaim bonus B1."
+    }
+  ],
+
+  "frameworks": [
+    {
+      "nama": "PyTorch",
+      "versi": "2.x",
+      "kegunaan": "Training dan fine-tuning model IndoBERT"
+    },
+    {
+      "nama": "Hugging Face Transformers",
+      "versi": "4.x",
+      "kegunaan": "Loading tokenizer dan pretrained IndoBERT"
+    },
+    {
+      "nama": "Scikit-learn",
+      "versi": "1.x",
+      "kegunaan": "Baseline TF-IDF + Logistic Regression dan evaluasi metrik"
+    },
+    {
+      "nama": "Datasets",
+      "versi": "2.x",
+      "kegunaan": "Konversi dataset dan integrasi Hugging Face Trainer"
+    }
+  ],
+
+  "datasets": [
+    {
+      "nama": "Spotify Reviews - Indonesia (Google Play Store)",
+      "tipe": "publik",
+      "sumber": "Kaggle",
+      "url_sumber_publik": "https://www.kaggle.com/datasets/pandaa12/spotify-reviews-indonesia-google-play-store",
+      "jumlah_sampel": 100000,
+      "jumlah_kelas": 3,
+      "proses_akuisisi_mandiri": "",
+      "peran_di_proyek": "Dataset utama untuk training, validation, dan testing model sentiment analysis berbasis Transformer.",
+      "spek_rl": null
+    }
+  ],
+
+  "metrik_utama": [
+    "Accuracy",
+    "Precision",
+    "Recall",
+    "F1-macro",
+    "Confusion Matrix"
+  ],
+
+  "klaim_bonus": [
+    "B1",
+    "B3"
+  ],
+
+  "anggota": [
+    {
+      "nama": "Dhafin Hamizan Setiawan",
+      "npm": "2306267145",
+      "peran_utama": "Data Engineer & Preprocessing",
+      "focus_area": [
+        "Eksplorasi dataset",
+        "Cleaning teks",
+        "Pra-pemrosesan data",
+        "Pelabelan sentimen",
+        "Split dataset"
+      ],
+      "konsep_dikuasai_implementasi": [
+        "Text preprocessing menggunakan regex",
+        "Train-validation-test split",
+        "TF-IDF vectorization",
+        "Dataset balancing"
+      ],
+      "konsep_dikuasai_teori": [
+        "Text preprocessing NLP",
+        "TF-IDF feature extraction",
+        "Class imbalance",
+        "Representasi teks"
+      ],
+      "bagian_laporan": [
+        "Bab I",
+        "Bab III.1",
+        "Bab III.2"
+      ],
+      "bagian_kode": [
+        "src/preprocessing.py",
+        "notebooks/01_eda_preprocessing.ipynb"
+      ]
+    },
+    {
+      "nama": "DDimas Ananda Sutiradi",
+      "npm": "2306250586",
+      "peran_utama": "Baseline Model Engineer",
+      "focus_area": [
+        "Implementasi baseline",
+        "TF-IDF",
+        "Logistic Regression",
+        "Evaluasi baseline"
+      ],
+      "konsep_dikuasai_implementasi": [
+        "TF-IDF vectorizer",
+        "Logistic Regression",
+        "Classification report",
+        "Confusion matrix"
+      ],
+      "konsep_dikuasai_teori": [
+        "Bag-of-Words",
+        "Machine learning untuk NLP",
+        "Precision dan Recall",
+        "Evaluasi multiclass classification"
+      ],
+      "bagian_laporan": [
+        "Bab III.3",
+        "Bab III.4"
+      ],
+      "bagian_kode": [
+        "src/train_baseline.py",
+        "src/evaluate.py"
+      ]
+    },
+    {
+      "nama": "Daffa Bagus Dhiananto",
+      "npm": "2306250756",
+      "peran_utama": "Transformer Model Engineer",
+      "focus_area": [
+        "Fine-tuning IndoBERT",
+        "Training loop",
+        "Hyperparameter tuning",
+        "Transformer architecture"
+      ],
+      "konsep_dikuasai_implementasi": [
+        "PyTorch Dataset/Dataloader",
+        "Hugging Face Trainer",
+        "AdamW optimizer",
+        "GPU training"
+      ],
+      "konsep_dikuasai_teori": [
+        "Transformer encoder",
+        "Self-attention mechanism",
+        "Query-Key-Value",
+        "Transfer learning NLP"
+      ],
+      "bagian_laporan": [
+        "Bab II",
+        "Diagram arsitektur model"
+      ],
+      "bagian_kode": [
+        "src/train.py",
+        "src/dataset.py"
+      ]
+    },
+    {
+      "nama": "Rafi Naufal Aryaputra",
+      "npm": "2306250680",
+      "peran_utama": "Evaluator & Report Writer",
+      "focus_area": [
+        "Error analysis",
+        "Visualisasi hasil",
+        "Evaluasi model",
+        "Penyusunan laporan"
+      ],
+      "konsep_dikuasai_implementasi": [
+        "Confusion matrix visualization",
+        "Classification report",
+        "Error analysis pipeline",
+        "Plotting hasil evaluasi"
+      ],
+      "konsep_dikuasai_teori": [
+        "F1-macro",
+        "Bias dan limitasi model NLP",
+        "Evaluasi multiclass classification"
+      ],
+      "bagian_laporan": [
+        "Bab III.4",
+        "Bab IV",
+        "Bab V"
+      ],
+      "bagian_kode": [
+        "notebooks/04_evaluation.ipynb",
+        "src/error_analysis.py"
+      ]
+    }
+  ],
+
+  "tautan": {
+    "github": "https://github.com/Dimassutiardi/Proyek-Akhir-AI.git",
+    "colab": "https://colab.research.google.com/drive/1OrH_LzepMqFGiKRqMGvwQLRwTTBJMCg2?usp=sharing",
+    "dataset_mandiri": null,
+    "video_demo": null
+  },
+
+  "ai_assistant_usage": {
+    "digunakan": true,
+    "tools": [
+      "GPT Go",
+      "GitHub Copilot"
+    ],
+    "bagian": [
+      "Autocompletion training loop PyTorch",
+      "Debugging error saat fine-tuning IndoBERT",
+      "Drafting struktur laporan",
+      "Penyusunan preprocessing dan evaluasi"
+    ],
+    "estimasi_persentase": 20
+  }
+}

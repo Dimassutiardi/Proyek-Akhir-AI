@@ -1,0 +1,190 @@
+{
+  "kode_kelompok": "K13",
+  "topik_pilihan": 4,
+  "nama_topik": "Transformer",
+  "judul_proyek": "Klasifikasi Sentimen Ulasan Spotify Menggunakan IndoBERT Berbasis Transformer",
+  "sub_judul_proyek": "Analisis Sentimen Teks Bahasa Indonesia / IndoBERT (Transformer)",
+  "abstrak_singkat": "Penelitian ini menerapkan fine-tuning pada model IndoBERT yang berbasis arsitektur Transformer untuk mengklasifikasikan sentimen ulasan aplikasi Spotify pada Google Play Store ke dalam tiga kelas: negatif, netral, dan positif. Dataset berasal dari Kaggle, berisi 100.000 ulasan pengguna dalam bahasa Indonesia yang kemudian jika diseimbangkan menjadi subset 12.000 sampel (4.000 data per kelas) dengan pembagian data 70/15/15. Model utama IndoBERT dibandingkan dengan baseline TF-IDF + Logistic Regression. Hasil pengujian menunjukkan model utama IndoBERT (LR=2e-5) meraih akurasi 67,89% dan F1-Macro 67,59%, melampaui baseline yang memperoleh akurasi 65,5% dan F1-Macro 65,09%. Kelas netral terbukti menjadi kelas yang paling sulit diklasifikasikan dengan F1-score 0,56 karena adanya ambiguitas teks.",
+  "datasets": [
+    {
+      "nama": "Spotify Reviews - Indonesia (Google Play Store)",
+      "tipe": "publik",
+      "sumber": "Kaggle",
+      "url_sumber_publik": "https://www.kaggle.com/datasets/pandaa12/spotify-reviews-indonesia-google-play-store",
+      "jumlah_sampel_asli": 100100,
+      "jumlah_sampel_digunakan": 12000,
+      "jumlah_kelas": 3,
+      "proses_akuisisi_mandiri": "",
+      "peran_di_proyek": "Dataset utama untuk training (8.400 sampel), validasi (1.800 sampel), dan testing (1.800 sampel) setelah dilakukan balanced sampling (4.000 sampel per kelas).",
+      "spek_rl": null
+    }
+  ],
+  "metrik_utama": [
+    "Accuracy",
+    "Precision-Macro",
+    "Recall-Macro",
+    "F1-Macro",
+    "Confusion Matrix"
+  ],
+  "hasil_eksperimen": {
+    "baseline_tf_idf_logistic_regression": {
+      "accuracy": 0.6550,
+      "precision": 0.6485,
+      "recall": 0.6550,
+      "f1_macro": 0.6509
+    },
+    "indobert_lr_2e_5_main": {
+      "accuracy": 0.6789,
+      "precision": 0.6758,
+      "recall": 0.6789,
+      "f1_macro": 0.6759
+    },
+    "indobert_lr_1e_5_tuned": {
+      "accuracy": 0.6794,
+      "precision": 0.6737,
+      "recall": 0.6794,
+      "f1_macro": 0.6758
+    }
+  },
+  "kontribusi_anggota": [
+    {
+      "nama": "Dhafin Hamizan Setiawan",
+      "npm": "2306267145",
+      "peran_utama": "Transformer & Deep Learning Specialist",
+      "focus_area": [
+        "Proses tokenisasi teks dengan menggunakan metode WordPiece",
+        "Konfigurasi hyperparameter pelatihan dan proses fine-tuning model IndoBERT via PyTorch dan Hugging Face",
+        "Analisis mendalam Confusion Matrix dan kalkulasi metrik F1-macro multi-kelas",
+        "Pelaksanaan Error Analysis untuk mengidentifikasi bias serta limitasi model IndoBERT pada ulasan yang ambigu atau sarkasme"
+      ],
+      "konsep_dikuasai_implementasi": [
+        "PyTorch & Hugging Face Transformers API",
+        "WordPiece Tokenization pipeline",
+        "Confusion Matrix calculation",
+        "Multi-class F1-macro evaluation matrices"
+      ],
+      "konsep_dikuasai_teori": [
+        "Self-Attention mechanism",
+        "Pre-trained language models architecture",
+        "Error analysis methodology dalam domain NLP",
+        "Transformers optimization and training dynamics"
+      ],
+      "bagian_laporan": [
+        "Bab III.5 (Analisis Hyperparameter Tuning)",
+        "Bab III.6 (Hasil Kualitatif & Error Analysis)"
+      ],
+      "bagian_kode": [
+        "notebooks/03_transformer.ipynb"
+      ]
+    },
+    {
+      "nama": "Dimas Ananda Sutiardi",
+      "npm": "2306250586",
+      "peran_utama": "Baseline & Evaluation Engineer",
+      "focus_area": [
+        "Pembentukan matriks pembobotan statistik TF-IDF dari korpus teks ulasan",
+        "Pelatihan model linear Logistic Regression multi-kelas serta evaluasi metrik dasar",
+        "Penyimpanan berkas model ke format serialisasi .pkl",
+        "Analisis keterbatasan metode statistik konvensional dalam menangkap dependensi urutan kata (word order)"
+      ],
+      "konsep_dikuasai_implementasi": [
+        "TF-IDF Vectorization menggunakan Scikit-Learn",
+        "Multi-class Logistic Regression training",
+        "Model serialization and persistence (.pkl)",
+        "Baseline evaluation metrics extraction"
+      ],
+      "konsep_dikuasai_teori": [
+        "Statistical feature extraction in text",
+        "Linear classification models algorithms",
+        "Word order dependency limitations of statistical NLP",
+        "Performance benchmarks criteria"
+      ],
+      "bagian_laporan": [
+        "Bab II (Pendekatan AI)",
+        "Bab III.3 (Metrik Evaluasi)",
+        "Bab III.4 (Hasil Kuantitatif)"
+      ],
+      "bagian_kode": [
+        "notebooks/02_baseline.ipynb"
+      ]
+    },
+    {
+      "nama": "Daffa Bagus Dhiananto",
+      "npm": "2306250756",
+      "peran_utama": "Data Explorer & Preprocessing Analyst",
+      "focus_area": [
+        "Exploratory Data Analysis (EDA) untuk meninjau karakteristik data mentah",
+        "Analisis distribusi persebaran label sentimen pada ulasan aplikasi Spotify",
+        "Pembersihan teks korpus bahasa Indonesia berbasis regular expression (regex) terhadap kebersihan data"
+      ],
+      "konsep_dikuasai_implementasi": [
+        "Regular Expression (regex) text cleaning operations",
+        "Pandas data matrix manipulation & debugging structures",
+        "Data visualization techniques for label distribution"
+      ],
+      "konsep_dikuasai_teori": [
+        "Exploratory Data Analysis core concepts",
+        "Text preprocessing and normalization data pipelines",
+        "Impact of noisy text data in Natural Language Processing"
+      ],
+      "bagian_laporan": [
+        "Bab III.1 (Dataset & Pra-pemrosesan)",
+        "Bab III.2 (Konfigurasi Eksperimen)",
+        "Bab V.1 (Kesimpulan)"
+      ],
+      "bagian_kode": [
+        “notebooks/01_eda_preprocessing.ipynb” dan “src/preprocessing.py”
+      ]
+    },
+    {
+      "nama": "Rafi Naufal Aryaputra",
+      "npm": "2306250680",
+      "peran_utama": "Deployment & Interface Engineer",
+      "focus_area": [
+        "Instalasi, konfigurasi, dan setup framework Gradio untuk web demo",
+        "Pemuatan saved model biner dan tokenizer IndoBERT dari folder penyimpanan lokal",
+        "Penyusunan fungsi inferensi pipeline data real-time untuk pemrosesan teks input baru",
+        "Perancangan antarmuka visual interaktif untuk demonstrasi model aplikasi secara langsung"
+      ],
+      "konsep_dikuasai_implementasi": [
+        "Gradio UI framework development",
+        "Local model loading and state pipeline integration",
+        "Interactive web application layout customization"
+      ],
+      "konsep_dikuasai_teori": [
+        "Model deployment architectures for local development",
+        "User Interface design patterns for AI applications",
+        "Real-time text inference processing workflows"
+      ],
+      "bagian_laporan": [
+        "Bab I (Pendahulan / Latar Belakang Proyek)",
+        "Bab III.7 (Kontribusi Individual & Deklarasi AI)",
+        "Bab V.3 (Pekerjaan Lanjutan / Future Work)"
+      ],
+      "bagian_kode": [
+        "notebooks/04_web_demo.ipynb"
+      ]
+    }
+  ],
+  "tautan": {
+    "github": "https://github.com/Dimassutiardi/Proyek-Akhir-AI",
+    "colab": "https://colab.research.google.com/drive/1Akavgv126wsKYRrn0jWM5fEEVzYP0YQl?usp=sharing",
+    "dataset_mandiri": "https://www.kaggle.com/datasets/pandaa12/spotify-reviews-indonesia-google-play-store",
+    "video_demo": null
+  },
+  "ai_assistant_usage": {
+    "digunakan": true,
+    "tools": [
+      "GPT Go",
+      "GitHub Copilot",
+      "Gemini"
+    ],
+    "bagian": [
+      "Pembuatan pola Regular Expression (regex) untuk text cleaning",
+      "Eksplorasi sintaks penyesuaian parameter multinomial pada Scikit-learn",
+      "Kustomisasi visualisasi Confusion Matrix menggunakan Seaborn/Matplotlib",
+      "Debugging fungsi ekstraksi sampel ulasan yang salah diklasifikasikan (false predictions)"
+    ],
+    "estimasi_persentase": 20
+  }
+}
